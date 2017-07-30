@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/ubuntu/mnist_model.tfl"
+all_model_checkpoint_paths: "/home/ubuntu/mnist_model.tfl"
