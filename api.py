@@ -1,11 +1,9 @@
 from flask import Flask, render_template, request, redirect
-import requests
 import json, ast
 import datetime
 from scipy import misc
 import numpy as np
-import matplotlib.pyplot as plt
-from test2 import retrieve_model
+from model_inference import retrieve_model
 
 app = Flask(__name__)
 
@@ -31,7 +29,7 @@ def upload():
       if file:
         data = misc.imread(file, flatten=True)
 	data = np.array(data)
-	if data.shpae != (28, 28):
+	if data.shape != (28, 28):
        	    data = misc.imresize(data, [28, 28])
 	    data = 256. - data
 	else:
@@ -39,7 +37,7 @@ def upload():
 	    data = data/np.float(np.max(data))
 	
 	result = model.predict(data.reshape([1,28,28,1]))
-	result = list(result(0))
+	result = list(result[0])
 	final_result = np.argmax(result)
 	result = map("{0:.5f}".format, result)
 	result = (final_result, result)
@@ -47,5 +45,5 @@ def upload():
 
 
 if __name__ == "__main__":
-        app.run(host="0.0.0.0", port=6006)
+        app.run(host="0.0.0.0", port=8888)
 
