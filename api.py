@@ -11,7 +11,6 @@ app = Flask(__name__)
 login_manager.init_app(app)"""
 
 app.config["DEBUG"] = True
-app.config['SECRET_KEY'] = 'harekrishna'
 app.config['WTF_CSRF_ENABLED'] = True
 
 model = retrieve_model()
