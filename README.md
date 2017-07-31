@@ -9,7 +9,7 @@ The model is first trained until 20 epochs and then saved / checkpointed, and th
 
 
 ## API
-Images should contain a digit and can be variably dimensioned and channeled (RGB, grayscale, etc.). The uploaded input image to the api is first converted to a 28X28 grayscale image with normalized pixel values, which is then fed to the CNN classifier as input. The CNN classifier returns probabilities for the 10 classes (digits 0 to 9 respectively). The api returns a tuple with the first entry being the preducted label (i.e. argmax of the outputted list) and the second entry being the ordered list of probability itself
+Images should ideally contain a digit and can be variably dimensioned and channeled (RGB, grayscale, etc.). The uploaded input image to the api is first converted to a 28X28 grayscale image with normalized pixel values, which is then fed to the CNN classifier as input. The CNN classifier returns probabilities for the 10 classes (digits 0 to 9 respectively). The api returns a tuple with the first entry being the preducted label (i.e. argmax of the outputted list) and the second entry being the ordered list of probability itself
 
 Flask is used as the web framework to receive POST requests in the form of image uploads (ONE IMAGE PER REQUEST) and returns the result (the tuple described in the above paragraph) in the form of a json string. Python is used as the programming language across the whole project.
 
@@ -26,6 +26,8 @@ The service is hosted on an aws ec2 machine, and is accessible at the follwoing 
 One needs to make a POST request and upload one image file at a time / per request. And should expect a response that looks like: [8, ["0.00001", "0.00000", "0.00000", "0.00000", "0.00000", "0.00000", "0.00021", "0.00000", "0.99938", "0.00040"]]
 Where, 8 is the digit/label that is predicted for the image, and the rest is an ordered list (0 to 9) of probabilities of the image belonging to the respective digit-class. If you upload multiple image files, you should expect this response: "Mutliple file uploads not allowed !" , and is you don't upload any files, then : "No files uploaded !".
 
+A REST Client was used to successfully verify whether the service is up and working and providing the expected response(s).
+
 ## Tests
 
-Some basic unit tests testing the methods written in the repo have been written. What needs to be added here is some tests pertaining to the api call itself as well as test automation.
+Some basic unit tests testing the methods written in the repo have been written. What needs to be added here is more (i) comprehensive tests covering all kinds of edge cases, (ii)some tests pertaining to the api call itself as well as (iii)test automation.
