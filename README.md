@@ -17,7 +17,7 @@ Flask is used as the web framework to receive POST requests in the form of image
 
 Image pre-processing needs further work. The current version is limited to two family of images (i) 28 X 28 grayscale, (ii) Bigger RGB images with lighter backround and darker digit pixels. Machine learning model could be trained further, or an even better model could be researched/chosen, but CNN is a fairly standard literature choice for MNIST modelling.
 
-The model checkpoint files currently visible in this repository should ideally be removed from here, and placed on a separate database or aws s3, but is kept here for the sake of reproducibility of results if needed.
+The model checkpoint files currently visible in this repository (inside the model_path folder) should ideally be removed from here, and placed on a separate database or aws s3, but is kept here for the sake of reproducibility of results if needed.
 
 
 ## Hosted Service
@@ -25,3 +25,7 @@ The model checkpoint files currently visible in this repository should ideally b
 The service is hosted on an aws ec2 machine, and is accessible at the follwoing endpoint: http://52.209.79.236:8888/upload/
 One needs to make a POST request and upload one image file at a time / per request. And should expect a response that looks like: [8, ["0.00001", "0.00000", "0.00000", "0.00000", "0.00000", "0.00000", "0.00021", "0.00000", "0.99938", "0.00040"]]
 Where, 8 is the digit/label that is predicted for the image, and the rest is an ordered list (0 to 9) of probabilities of the image belonging to the respective digit-class. If you upload multiple image files, you should expect this response: "Mutliple file uploads not allowed !" , and is you don't upload any files, then : "No files uploaded !".
+
+## Tests
+
+Some basic unit tests testing the methods written in the repo have been written. What needs to be added here is some tests pertaining to the api call itself as well as test automation.
