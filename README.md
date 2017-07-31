@@ -28,6 +28,9 @@ Where, 8 is the digit/label that is predicted for the image, and the rest is an 
 
 A REST Client was used to successfully verify whether the service is up and working and providing the expected response(s).
 
+
+
+
 ## Tests
 
 Some basic unit tests testing the methods written in the repo have been written. What needs to be added here is more (i) comprehensive tests covering all kinds of edge cases, (ii)some tests pertaining to the api call itself as well as (iii)test automation.
