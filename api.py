@@ -23,7 +23,7 @@ def upload():
 		None
 		Returns
 		-------
-		result : string
+		final_result : string
 			json-stringified tuple (a, b) where a is the most likely predicted digit (between 0 and 9) and b is the
 			ordered list of probabilities for each digit.
 	"""
@@ -35,13 +35,17 @@ def upload():
 		else:
 			file = request.files.values()[0]
 		if file:
-			data = misc.imread(file, flatten=True)
-			result = model.predict(pre_process_data(data))
+			try:
+				data = misc.imread(file, flatten=True)
+				data = pre_process_data(data)
+			except:
+				return "Sorry, uploaded image file not understood !!"
+			result = model.predict(data)
 			result = list(result[0])
-			final_result = np.argmax(result)
+			result_label = np.argmax(result)
 			result = map("{0:.5f}".format, result)
-			result = json.dumps(final_result, result)
-			return result
+			final_result = json.dumps((result_label, result))
+			return final_result
 	else:
 		return "Please make a POST request !"
 
