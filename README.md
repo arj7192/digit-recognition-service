@@ -26,9 +26,9 @@ The service is hosted on an aws ec2 machine, and is accessible at the follwoing 
 One needs to make a POST request and upload one image file at a time / per request. And should expect a response that looks like: [8, ["0.00001", "0.00000", "0.00000", "0.00000", "0.00000", "0.00000", "0.00021", "0.00000", "0.99938", "0.00040"]]
 Where, 8 is the digit/label that is predicted for the image, and the rest is an ordered list (0 to 9) of probabilities of the image belonging to the respective digit-class. If you upload multiple image files, you should expect this response: "Mutliple file uploads not allowed !" , and is you don't upload any files, then : "No files uploaded !".
 
-A REST Client was used to successfully verify whether the service is up and working and providing the expected response(s).
+A REST Client was used to successfully verify whether the service is up and working and providing the expected response(s). A screenshot of the same is shown below.
 
-
+![Screenshot](screenshot.png)
 
 
 ## Tests
