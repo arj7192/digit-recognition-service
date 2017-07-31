@@ -4,7 +4,7 @@ import tflearn
 from model_training import build_network
 
 
-def retrieve_model(model_path="mnist_model.tfl"):
+def retrieve_model(model_path="./model_path/mnist_model.tfl"):
 	"""
 		Load an already trained model checkpoint, restore the model using that and return the restored model object
         Parameters
