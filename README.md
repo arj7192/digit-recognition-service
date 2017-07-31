@@ -10,3 +10,5 @@ Images should contain a digit and can be variably dimensioned and channeled (RGB
 Flask is used as the web framework to receive POST requests in the form of image uploads (ONE IMAGE PER REQUEST) and returns the result (the tuple described in the above paragraph) in the form of a json string.
 
 Image pre-processing needs further work. The current version is limited to two family of images (i) 28 X 28 grayscale, (ii) Bigger RGB images with lighter backround and darker digit pixels. Machine learning model could be trained further, or an even better model could be researched/chosen, but CNN is a fairly standard literature choice for MNIST modelling.
+
+The model checkpoint files currently visible in this repository should ideall y be removed from here, and placed on a separate database or aws s3, but is kept here for the sake of reproducibility of results if needed.
