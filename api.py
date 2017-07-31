@@ -17,7 +17,7 @@ app.config['WTF_CSRF_ENABLED'] = True
 model = retrieve_model()
 
 
-@app.route('/upload/', methods=['GET', 'POST'])
+@app.route('/upload/', methods=['POST'])
 def upload():
    if request.method == 'POST':
       if len((request.files)) == 0:
@@ -43,7 +43,5 @@ def upload():
 	result = (final_result, result)
 	return json.dumps(result)
 
-
 if __name__ == "__main__":
         app.run(host="0.0.0.0", port=8888)
-
